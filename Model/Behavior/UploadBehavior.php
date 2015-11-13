@@ -220,7 +220,8 @@ class UploadBehavior extends ModelBehavior {
 				continue;
 			}
 
-            if ($this->settings[$model->alias][$field]['rename']) {
+            if ($this->settings[$model->alias][$field]['rename']
+            && !empty($model->data[$model->alias][$field]['name'])) {
                 $model->data[$model->alias]['realname'] = $model->data[$model->alias][$field]['name'];
                 $model->data[$model->alias][$field]['name'] = $this->_rename($model->data[$model->alias][$field]['name']);
             }
